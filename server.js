@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken')
 
 const server = jsonServer.create()
 const userdb = JSON.parse(fs.readFileSync('./db.json', 'UTF-8'))
+var router = jsonServer.router(require('./db.json'))
 
 server.use(bodyParser.urlencoded({extended: true}))
 server.use(bodyParser.json())
@@ -114,6 +115,8 @@ server.use(/^(?!\/auth).*$/,  (req, res, next) => {
     res.status(status).json({status, message})
   }
 })
+
+server.use(router)
 
 server.listen(8000, () => {
   console.log('Run Auth API Server')
