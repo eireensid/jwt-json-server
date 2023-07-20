@@ -5,5 +5,8 @@
       "name": "admin",
       "password": "password"
     }
-  ]
+  ],
+  "profile": {
+    "name": "admin"
+  }
 }
